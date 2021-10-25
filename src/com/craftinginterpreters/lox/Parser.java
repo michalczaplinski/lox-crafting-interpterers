@@ -2,6 +2,7 @@ package com.craftinginterpreters.lox;
 
 import static com.craftinginterpreters.lox.TokenType.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 class Parser {
@@ -13,18 +14,90 @@ class Parser {
     this.tokens = tokens;
   }
 
-  Expr parse() {
-    try {
-      return expression();
-    } catch (ParseError error) {
-      return null;
+  List<Stmt> parse() {
+    List<Stmt> statements = new ArrayList<>();
+    while (!isAtEnd()) {
+      statements.add(declaration());
     }
+
+    return statements;
   }
 
   private static class ParseError extends RuntimeException {}
 
   private Expr expression() {
-    return equality();
+    return assignment();
+  }
+
+  private Stmt declaration() {
+    try {
+      if (match(VAR)) return varDeclaration();
+
+      return statement();
+    } catch (ParseError error) {
+      synchronize();
+      return null;
+    }
+  }
+
+  private Stmt statement() {
+    if (match(PRINT)) return printStatement();
+    if (match(LEFT_BRACE)) return new Stmt.Block(block());
+
+    return expressionStatement();
+  }
+
+  private Stmt printStatement() {
+    Expr value = expression();
+    consume(SEMICOLON, "Expect ';' after value.");
+    return new Stmt.Print(value);
+  }
+
+  private Stmt varDeclaration() {
+    Token name = consume(IDENTIFIER, "Expect variable name.");
+
+    Expr initializer = null;
+    if (match(EQUAL)) {
+      initializer = expression();
+    }
+
+    consume(SEMICOLON, "Expect ';' after variable declaration.");
+    return new Stmt.Var(name, initializer);
+  }
+
+  private Stmt expressionStatement() {
+    Expr expr = expression();
+    consume(SEMICOLON, "Expect ';' after expression.");
+    return new Stmt.Expression(expr);
+  }
+
+  private List<Stmt> block() {
+    List<Stmt> statements = new ArrayList<>();
+
+    while (!check(RIGHT_BRACE) && !isAtEnd()) {
+      statements.add(declaration());
+    }
+
+    consume(RIGHT_BRACE, "Expect '}' after block.");
+    return statements;
+  }
+
+  private Expr assignment() {
+    Expr expr = equality();
+
+    if (match(EQUAL)) {
+      Token equals = previous();
+      Expr value = assignment();
+
+      if (expr instanceof Expr.Variable) {
+        Token name = ((Expr.Variable) expr).name;
+        return new Expr.Assign(name, value);
+      }
+
+      error(equals, "Invalid assignment target.");
+    }
+
+    return expr;
   }
 
   private Expr equality() {
@@ -94,6 +167,10 @@ class Parser {
       return new Expr.Literal(previous().literal);
     }
 
+    if (match(IDENTIFIER)) {
+      return new Expr.Variable(previous());
+    }
+
     if (match(LEFT_PAREN)) {
       Expr expr = expression();
       consume(RIGHT_PAREN, "Expect ')' after expression.");
@@ -103,6 +180,9 @@ class Parser {
     throw error(peek(), "Expect expression.");
   }
 
+  /**
+   * While the token is of certain type, advance the `current` pointer.
+   */
   private boolean match(TokenType... types) {
     for (TokenType type : types) {
       if (check(type)) {
@@ -114,30 +194,49 @@ class Parser {
     return false;
   }
 
+  /**
+   * Only advances the `current` pointer if token is of particular type.
+   * Throws an error otherwise.
+   */
   private Token consume(TokenType type, String message) {
     if (check(type)) return advance();
 
     throw error(peek(), message);
   }
 
+  /**
+   * Checks if current token is of particular type
+   */
   private boolean check(TokenType type) {
     if (isAtEnd()) return false;
     return peek().type == type;
   }
 
+  /**
+   * Does `current++`, so just moves the pointer and then returns the "previous" value.
+   */
   private Token advance() {
     if (!isAtEnd()) current++;
     return previous();
   }
 
+  /**
+   * Checks if the current token is EOF (end of file).
+   */
   private boolean isAtEnd() {
     return peek().type == EOF;
   }
 
+  /**
+   * Just take a "look" at the current token. Don't consume or advance.
+   */
   private Token peek() {
     return tokens.get(current);
   }
 
+  /**
+   * Like `peek()` but "takes a look" the previous token, rather than the current one.
+   */
   private Token previous() {
     return tokens.get(current - 1);
   }
