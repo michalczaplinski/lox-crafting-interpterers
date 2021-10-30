@@ -1,12 +1,12 @@
 ## Hello
 
-This is the code for the Lox Language from the (Crafting
-Interpreters)[http://craftinginterpreters.com/] book by Robert Nystrom.
+This is the code for the Lox Language from the [Crafting
+Interpreters](http://craftinginterpreters.com/) book by Robert Nystrom.
 
 ## Building stuff
 
-I use Vscode with the (Java
-extension)[https://marketplace.visualstudio.com/items?itemName=vscjava.vscode-java-pack]
+I use Vscode with the [Java
+extension](https://marketplace.visualstudio.com/items?itemName=vscjava.vscode-java-pack)
 which sets up the build automatically for me. You'll need to install the JDK by
 downloadign it manually, from `brew` or using your favourite java version manager.
 
