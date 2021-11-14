@@ -1,26 +1,26 @@
-// var a = 0;
-// var temp;
+var a = 0;
+var temp;
 
-// for (var b = 1; a < 100; b = temp + b) {
-//   print a;
-//   temp = a;
-//   a = b;
-// }
+for (var b = 1; a < 100; b = temp + b) {
+  print a;
+  temp = a;
+  a = b;
+}
 
-// fun sayHi(first, last) {
-//   print "Hi, " + first + " " + last + "!";
-// }
+fun sayHi(first, last) {
+  print "Hi, " + first + " " + last + "!";
+}
 
-// sayHi("Dear", "Reader");
+sayHi("Dear", "Reader");
 
-// fun fib(n) {
-//   if (n <= 1) return n;
-//   return fib(n - 2) + fib(n - 1);
-// }
+fun fib(n) {
+  if (n <= 1) return n;
+  return fib(n - 2) + fib(n - 1);
+}
 
-// for (var i = 0; i < 20; i = i + 1) {
-//   print fib(i);
-// }
+for (var i = 0; i < 20; i = i + 1) {
+  print fib(i);
+}
 
 fun makeCounter() {
   var i = 0;
