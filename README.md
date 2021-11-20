@@ -8,7 +8,7 @@ Interpreters](http://craftinginterpreters.com/) book by Robert Nystrom.
 I use Vscode with the [Java
 extension](https://marketplace.visualstudio.com/items?itemName=vscjava.vscode-java-pack)
 which sets up the build automatically for me. You'll need to install the JDK by
-downloadign it manually, from `brew` or using your favourite java version manager.
+downloading it manually, from `brew` or using your favourite java version manager.
 
 The workspace contains two folders by default, where:
 
@@ -17,4 +17,23 @@ The workspace contains two folders by default, where:
 
 Meanwhile, the compiled output files will be generated in the `build` folder by default.
 
-> If you want to customize the folder structure, open `.vscode/settings.json` and update the related settings there.
+> If you want to customize the folder structure, open `.vscode/settings.json`
+> and update the related settings there. You probably want sth like:
+
+```json
+// .vscode/settings.json
+{
+  "java.project.sourcePaths": ["src"],
+  "java.project.outputPath": "build"
+}
+```
+
+Also recommended is using the Java prettier formatter:
+`mwpb.java-prettier-formatter`:
+
+```json
+// .vscode/settings.json
+  "[java]": {
+    "editor.defaultFormatter": "mwpb.java-prettier-formatter"
+  },
+```
