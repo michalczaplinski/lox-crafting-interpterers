@@ -89,3 +89,16 @@ class BostonCream < Doughnut {
 }
 
 BostonCream().cook();
+
+var array = Array(3);
+
+// "length" returns the number of elements.
+print array.length; // "3".
+
+// "set" sets the element at the given index to the given value.
+array.set(0, 1);
+array.set(1, "new");
+array.set(2, Array(1));
+
+// "get" returns the element at a given index.
+print array;
