@@ -1,4 +1,7 @@
 {
   "java.project.sourcePaths": ["src"],
-  "java.project.outputPath": "build"
+  "java.project.outputPath": "build",
+  "[c]": {
+    "editor.defaultFormatter": "ms-vscode.cpptools"
+  }
 }
