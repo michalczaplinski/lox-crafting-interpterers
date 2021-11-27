@@ -3,5 +3,16 @@
   "java.project.outputPath": "build",
   "[c]": {
     "editor.defaultFormatter": "ms-vscode.cpptools"
+  },
+  "[cpp]": {
+    "editor.defaultFormatter": "ms-vscode.cpptools"
+  },
+  "files.associations": {
+    "*.module": "php",
+    "*.php": "php",
+    "vm.h": "c",
+    "common.h": "c",
+    "debug.h": "c",
+    "chunk.h": "c"
   }
 }
