@@ -20,7 +20,7 @@ Meanwhile, the compiled output files will be generated in the `build` folder by 
 > If you want to customize the folder structure, open `.vscode/settings.json`
 > and update the related settings there. You probably want sth like:
 
-```json
+```js
 // .vscode/settings.json
 {
   "java.project.sourcePaths": ["src"],
@@ -31,7 +31,7 @@ Meanwhile, the compiled output files will be generated in the `build` folder by 
 Also recommended is using the Java prettier formatter:
 `mwpb.java-prettier-formatter`:
 
-```json
+```js
 // .vscode/settings.json
   "[java]": {
     "editor.defaultFormatter": "mwpb.java-prettier-formatter"
