@@ -8,9 +8,10 @@ clox:
 # Compile a debug build of clox.
 debug:
 	@ $(MAKE) -f ./c.make NAME=cloxd MODE=debug SOURCE_DIR=c
+	@ cp build/cloxd cloxd 
 
 # Compile the C interpreter as ANSI standard C++.
 cpplox:
 	@ $(MAKE) -f ./c.make NAME=cpplox MODE=debug CPP=true SOURCE_DIR=c
 
-.PHONY: clox
+.PHONY: clox cloxd
