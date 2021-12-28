@@ -13,6 +13,18 @@
     "vm.h": "c",
     "common.h": "c",
     "debug.h": "c",
-    "chunk.h": "c"
+    "chunk.h": "c",
+    "__availability": "c",
+    "__errc": "c",
+    "__hash_table": "c",
+    "__locale": "c",
+    "__tuple": "c",
+    "bitset": "c",
+    "ios": "c",
+    "locale": "c",
+    "__config": "c",
+    "iterator": "c",
+    "memory": "c",
+    "complex": "c"
   }
 }

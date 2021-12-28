@@ -14,7 +14,7 @@ else
 	CFLAGS := -std=c99
 endif
 
-CFLAGS += -Wall -Wextra -Werror -Wno-unused-parameter -Wno-unused-function
+CFLAGS += -arch arm64 -m64 -Wall -Wextra -Werror -Wno-unused-parameter -Wno-unused-function
 # If we're building at a point in the middle of a chapter, don't fail if there
 # are functions that aren't used yet.
 ifeq ($(SNIPPET),true)

@@ -5,17 +5,18 @@
   "version": "0.2.0",
   "configurations": [
     {
-      "name": "Build clox and run the test file ./test.lox",
-      "type": "cppdbg",
+      "name": "Build clox and run the test file ./test-clox.lox",
+      "type": "lldb",
       "request": "launch",
       "program": "${workspaceFolder}/cloxd",
-      "args": ["./test.lox"],
+      "args": ["./test-clox.lox"],
       "stopAtEntry": true,
       "cwd": "${workspaceFolder}",
       "environment": [],
       "externalConsole": false,
       "MIMode": "lldb",
-      "preLaunchTask": "clang build"
+      "targetArchitecture": "arm64",
+      "preLaunchTask": "make debug"
     }
   ]
 }

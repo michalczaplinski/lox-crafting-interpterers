@@ -3,7 +3,7 @@
 This is the code for the Lox Language from the [Crafting
 Interpreters](http://craftinginterpreters.com/) book by Robert Nystrom.
 
-## Building stuff
+## Building jlox (the Java version)
 
 I use Vscode with the [Java
 extension](https://marketplace.visualstudio.com/items?itemName=vscjava.vscode-java-pack)
@@ -37,3 +37,10 @@ Also recommended is using the Java prettier formatter:
     "editor.defaultFormatter": "mwpb.java-prettier-formatter"
   },
 ```
+
+## Building clox (the C version)
+
+In order to build the C version on a M1 mac, install
+[this](https://marketplace.visualstudio.com/items?itemName=vadimcn.vscode-lldb)
+VSCode extension and make sure that you are using the included
+`.vscode/launch.json` file.

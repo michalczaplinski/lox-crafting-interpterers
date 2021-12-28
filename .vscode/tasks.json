@@ -5,15 +5,26 @@
   "tasks": [
     {
       "type": "shell",
-      "label": "clang build",
+      "label": "make debug",
       "command": "make debug",
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "group": "build",
+      "problemMatcher": []
+    },
+    {
+      "type": "shell",
+      "label": "make clox",
+      "command": "make clox",
       "options": {
         "cwd": "${workspaceFolder}"
       },
       "group": {
         "kind": "build",
         "isDefault": true
-      }
+      },
+      "problemMatcher": []
     }
   ]
 }
