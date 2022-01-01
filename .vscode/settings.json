@@ -25,6 +25,7 @@
     "__config": "c",
     "iterator": "c",
     "memory": "c",
-    "complex": "c"
+    "complex": "c",
+    "memory.h": "c"
   }
 }
