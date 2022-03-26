@@ -26,6 +26,7 @@
     "iterator": "c",
     "memory": "c",
     "complex": "c",
-    "memory.h": "c"
+    "memory.h": "c",
+    "__threading_support": "c"
   }
 }
