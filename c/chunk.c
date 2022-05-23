@@ -1,6 +1,6 @@
 #include "chunk.h"
-
 #include <stdlib.h>
+#include "memory.h"
 
 void initChunk(Chunk* chunk) {
   chunk->count = 0;
@@ -8,6 +8,13 @@ void initChunk(Chunk* chunk) {
   chunk->code = NULL;
   chunk->lines = NULL;
   initValueArray(&chunk->constants);
+}
+
+void freeChunk(Chunk* chunk) {
+  FREE_ARRAY(uint8_t, chunk->code, chunk->capacity);
+  FREE_ARRAY(int, chunk->lines, chunk->capacity);
+  freeValueArray(&chunk->constants);
+  initChunk(chunk);
 }
 
 void writeChunk(Chunk* chunk, uint8_t byte, int line) {
@@ -22,13 +29,6 @@ void writeChunk(Chunk* chunk, uint8_t byte, int line) {
   chunk->code[chunk->count] = byte;
   chunk->lines[chunk->count] = line;
   chunk->count++;
-}
-
-void freeChunk(Chunk* chunk) {
-  FREE_ARRAY(uint8_t, chunk->code, chunk->capacity);
-  FREE_ARRAY(int, chunk->lines, chunk->capacity);
-  freeValueArray(&chunk->constants);
-  initChunk(chunk);
 }
 
 int addConstant(Chunk* chunk, Value value) {

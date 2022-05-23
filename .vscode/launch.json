@@ -5,7 +5,7 @@
   "version": "0.2.0",
   "configurations": [
     {
-      "name": "Build clox and run the test file ./test-clox.lox",
+      "name": "Build cloxd (debug) and run the test file ./test-clox.lox",
       "type": "lldb",
       "request": "launch",
       "program": "${workspaceFolder}/cloxd",
@@ -17,6 +17,22 @@
       "MIMode": "lldb",
       "targetArchitecture": "arm64",
       "preLaunchTask": "make debug"
+    },
+    {
+      "name": "Build clox and run the test file ./test-clox.lox",
+      "type": "lldb",
+      "request": "launch",
+      "program": "${workspaceFolder}/clox",
+      "args": [
+        "./test-clox.lox"
+      ],
+      "stopAtEntry": true,
+      "cwd": "${workspaceFolder}",
+      "environment": [],
+      "externalConsole": false,
+      "MIMode": "lldb",
+      "targetArchitecture": "arm64",
+      "preLaunchTask": "make clox"
     }
   ]
 }

@@ -1,15 +1,14 @@
-#include "value.h"
-
 #include <stdio.h>
 #include <string.h>
 
 #include "memory.h"
 #include "object.h"
+#include "value.h"
 
 void initValueArray(ValueArray* array) {
-  array->count = 0;
-  array->capacity = 0;
   array->values = NULL;
+  array->capacity = 0;
+  array->count = 0;
 }
 
 void writeValueArray(ValueArray* array, Value value) {

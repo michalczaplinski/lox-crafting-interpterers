@@ -27,6 +27,29 @@
     "memory": "c",
     "complex": "c",
     "memory.h": "c",
-    "__threading_support": "c"
-  }
+    "__threading_support": "c",
+    "__bit_reference": "c",
+    "__node_handle": "c",
+    "atomic": "c",
+    "chrono": "c",
+    "cstddef": "c",
+    "__memory": "c",
+    "limits": "c",
+    "optional": "c",
+    "ratio": "c",
+    "system_error": "c",
+    "tuple": "c",
+    "type_traits": "c",
+    "vector": "c",
+    "__functional_base": "c",
+    "algorithm": "c",
+    "functional": "c"
+  },
+  "makefile.launchConfigurations": [
+    {
+      "cwd": "/Users/czapla/Projects/lox-crafting-interpterers/build",
+      "binaryPath": "/Users/czapla/Projects/lox-crafting-interpterers/build/clox",
+      "binaryArgs": []
+    }
+  ]
 }
